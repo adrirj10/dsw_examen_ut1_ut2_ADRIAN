@@ -12,12 +12,31 @@
         @if($messages->isEmpty())
             <p>No hay mensajes en la base de datos</p>
         @else
-            <ul>
-                @foreach($messages as $message)
-                    <li>{{ $message->text }}</li>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Texto</th>
+                    <th>Subrayado</th>
+                    <th>Negrita</th>
+                    <TH>ACCIONES</TH>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($messages as $message)
+                    <tr>
+                        <td>{{ $message->id }}</td>
+                        <td>{{ $message->text }}</></td>
+                        <td>{{ $message->subrayado }}</td>
+                        <td>{{ $message->negrita }}</td>
+                        <TD> <a href="{{ route('messages.editar', $message->id) }}">Editar</a></TD>
+
+                    </tr>
                 @endforeach
-            </ul>
+            </tbody>
+        </table>
         @endif
     </div>
 </body>
 </html>
+
